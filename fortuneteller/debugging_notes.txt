@@ -1,0 +1,39 @@
+# Django Fortune Teller Debugging Notes
+
+## 1. Virtual Environment
+- Confirmed your venv was activated (prompt showed `(venv)`).
+- Checked which Python and pip were being used to ensure packages installed in the venv.
+
+## 2. Django Installation
+- Verified Django was installed in the venv, not globally.
+
+## 3. Development Server
+- Guided you to run the server from the correct directory (where `manage.py` is).
+- Advised using a different port (8001) when default port 8000 was blocked.
+
+## 4. Static Files
+- Updated your template to load static files and link to `style.css`.
+
+## 5. Fortune List Issue
+- Explained that your view was using a hardcoded Python list (`fortuneList`) for fortunes, as taught in Codecademy.
+- Confirmed your URL routing was correct and should display fortunes at the root URL.
+
+## 6. Database Model Issue
+- Noted your view switched to using the `Fortune` model and querying the database.
+- Diagnosed the error: `no such table: fortunes_fortune` meant migrations were not run.
+- Provided steps to run `makemigrations` and `migrate` to create the table.
+
+## 7. Main Reason Fortunes Not Showing
+- If using the database model, fortunes must be added to the database.
+- If using the hardcoded list, the view must use `fortuneList`.
+
+## 8. General Debugging Advice
+- Always activate venv before running Python/Django commands.
+- Always run `manage.py` from the directory where it exists.
+- Restart the server after code or template changes.
+- Check browser console and terminal for errors.
+
+---
+If you need to switch between using the database and the hardcoded list, update your view accordingly. If you want to use the database, add fortunes via the admin or shell. If you want to use the list, keep fortunes in `fortuneList`.
+
+Let me know if you need more help!
