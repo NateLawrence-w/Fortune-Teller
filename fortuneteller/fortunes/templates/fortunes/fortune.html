@@ -9,14 +9,27 @@
 </head>
 <body>
     <h1>Mysterious Fortune Teller</h1>
-    <img src="/fortuneteller/fortunes/static/Magic ball -20260224-135958.piskel" alt="Magic Ball">
     <div class="Fortune-image">
-        <img>
+        <img src="{% static 'fortunes/magic-ball.png' %}" alt="Magic Ball">
     </div>
 <div class="fortune-card"> 
  <h1>Here is your fortune:</h1>
 
- <p>{{ fortune}}</p>
+ <p id="fortune-text">{{ fortune }}</p>
+ <button id="next-fortune" class="next-button">Next fortune</button>
 </div>
+
+<script>
+const fortunes = JSON.parse("{{ fortune_list_json|escapejs }}");
+let index = fortunes.indexOf("{{ fortune|escapejs }}");
+if (index === -1) index = 0;
+const p = document.getElementById('fortune-text');
+const btn = document.getElementById('next-fortune');
+btn.addEventListener('click', ()=> {
+    index = (index + 1) % fortunes.length;
+    p.textContent = fortunes[index];
+});
+</script>
+
 </body>
 </html>

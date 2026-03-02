@@ -1,11 +1,13 @@
 from django.shortcuts import render
-import random 
+import random
+import json
 
 # Create your views here.
-def  fortune(request):
+def fortune(request):
     fortune = random.choice(fortuneList)
     context = {
-        "fortune": fortune
+        "fortune": fortune,
+        "fortune_list_json": json.dumps(fortuneList)
     }
     return render(request, 'fortunes/fortune.html', context)
 
